@@ -21,13 +21,40 @@ package 网易2019实习生招聘编程题集合_8题;
  * 对于每个测试用例, 输出一个正整数表示可能的数对数量。
  * <p>
  * 输入例子1:
- * 5 2
+ * 5 2 (43487 0)
  * <p>
  * 输出例子1:
- * 7
+ * 7 (1891119169)
  * <p>
  * 例子说明1:
  * 满足条件的数对有(2,3),(2,4),(2,5),(3,4),(3,5),(4,5),(5,3)
  */
+
+import java.util.*;
+
 public class 数对 {
+
+    //注意(x,y)是正整数对，且k有可能为0
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+        sc.close();
+
+        long count = 0;
+        for (int i = Math.max(1, k); i < n; i++) {
+            count += (n - i);
+        }
+        for (int j = k + 1; j <= n; j++) {
+            int a = j - k;
+            int b = n / j;
+            count += a * (b - 1);
+            int c = n % j;
+            if (c >= k)
+                count += c - k + 1;
+        }
+        System.out.println(count);
+
+    }
+
 }
