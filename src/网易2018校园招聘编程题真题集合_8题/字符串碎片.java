@@ -38,22 +38,12 @@ public class 字符串碎片 {
         sc.close();
 
         int n = s.length();
-        int sum = 0;
-        int time = 0;
-        int count = 1;
-        for (int i = 0; i < n - 1; i++) {
-            if (s.charAt(i) == (s.charAt(i + 1)))
-                count++;
-            else {
-                sum += count;
+        int time = 1;
+        for (int i = 0; i < n - 1; i++)
+            if (s.charAt(i) != (s.charAt(i + 1)))
                 time++;
-                count = 1;
-            }
-        }
-        sum += count;
-        time++;
 
-        double result = (double)sum / time;
+        double result = (double) n / time;
         System.out.format("%.2f", result);
     }
 }
